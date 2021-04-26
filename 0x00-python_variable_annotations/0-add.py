@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+""" Add two float number"""
+
 
 def add(a: float, b: float) -> float:
     """[that takes a float a and a float b as
