@@ -29,7 +29,7 @@ class Auth:
         Returns:
             str: [description]
         """
-        return "None"
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """[summary]
@@ -37,4 +37,4 @@ class Auth:
         Returns:
             [type]: [description]
         """
-        return "None"
+        return None
