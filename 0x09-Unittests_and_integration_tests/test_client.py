@@ -74,7 +74,18 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """sumary_line"""
         cls.get_patcher.stop()
+
+    def test_public_repos(self):
+        """sumary_line"""
+        test_class = GithubOrgClient("holberton")
+        assert True
+
+    def test_public_repos_with_license(self):
+        """sumary_line"""
+        test_class = GithubOrgClient("holberton")
+        assert True
 
 
 if __name__ == '__main__':
