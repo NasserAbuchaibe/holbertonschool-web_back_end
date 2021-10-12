@@ -62,3 +62,24 @@ class DB:
             return search_user
         else:
             raise NoResultFound
+
+    def update_user(self, user_id: int, **kwargs) -> None:
+        """  Find the user to update """
+
+        user_update = self.find_user_by(id=user_id)
+
+        users_columns = [
+            'id',
+            'email',
+            'hashed_password',
+            'session_id',
+            'reset_token'
+        ]
+
+        for key, value in kwargs.items():
+            if key in users_columns:
+                setattr(user_update, key, value)
+            else:
+                raise ValueError
+
+        self._session.commit()
