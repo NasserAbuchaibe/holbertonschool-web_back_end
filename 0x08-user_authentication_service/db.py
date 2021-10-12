@@ -37,3 +37,28 @@ class DB:
         self._session.add(user)
         self._session.commit()
         return user
+
+    def find_user_by(self, **kwargs) -> User:
+        """ Returns the first row found in the users table """
+
+        if not kwargs:
+            raise InvalidRequestError
+
+        users_columns = [
+            'id',
+            'email',
+            'hashed_password',
+            'session_id',
+            'reset_token'
+        ]
+
+        for arg in kwargs:
+            if arg not in users_columns:
+                raise InvalidRequestError
+
+        search_user = self._session.query(User).filter_by(**kwargs).first()
+
+        if search_user:
+            return search_user
+        else:
+            raise NoResultFound
